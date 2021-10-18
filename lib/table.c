@@ -21,6 +21,7 @@ struct Table {
 double get_value(struct Table table, double n, double m, char** error);
 void write_table_to_file(struct Table table, const char* src);
 void print_table(struct Table *table);
+void write_table_to_csv_file(const char* path, struct Table);
 
 /**
  * Implementation
@@ -95,6 +96,42 @@ void print_table(struct Table *table) {
         }
         printf("\n");
     }
+}
+
+void write_table_to_csv_file(const char* path, struct Table table) {
+  const char* file_name = "temp/write_table.csv";
+  // Open file
+  FILE* file = fopen(file_name, "w");
+
+  if (!file) {
+    return;
+  }
+  int i, j;
+
+  // Write header
+  for(i = 0; i < table.headers.size; i++) {
+    fprintf(file, ";%lf", table.headers.values[i]);
+  }
+  fprintf(file, "\n");
+
+  // Write content
+  for (i = 0; i < table.columns.size; i++) {
+    // Write the column
+    fprintf(file, "%lf", table.columns.values[j]);
+
+    // Write the rest of content
+    for (j = 0; j < table.headers.size; j++) {
+      fprintf(file, ";%lf", table.content.matrix[i][j]);
+    }
+
+    fprintf(file, "\n");
+  }
+
+  // Close the file
+  fclose(file);
+
+  // Copy file with replacing
+  replace_character(file_name, path, '.', ',');
 }
 
 #endif
