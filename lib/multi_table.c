@@ -77,7 +77,7 @@ void save_multi_table_in_file(const char* path, struct MultiTable* multi_table) 
     return;
   }
 
-  Array header = multi_table->tables[0].table->headers;
+  struct Array header = multi_table->tables[0].table->headers;
 
   const char* file_name = "temp/write_multi_table.csv";
   // Open file
@@ -90,13 +90,13 @@ void save_multi_table_in_file(const char* path, struct MultiTable* multi_table) 
 
   // Write header
   fprintf(file, "p;");
-  for(i = 0; i < headers.size; i++)
-    fprintf(file, ";%lf", headers.values[i]);
+  for(i = 0; i < header.size; i++)
+    fprintf(file, ";%lf", header.values[i]);
   fprintf(file, "\n");
 
   // Write separator
-  fprintf(f, "n;x");
-  for (i = 0; i < headers.size; i++)
+  fprintf(file, "n;x");
+  for (i = 0; i < header.size; i++)
     fprintf(file, ";");
   fprintf(file, "\n");
 
@@ -106,13 +106,13 @@ void save_multi_table_in_file(const char* path, struct MultiTable* multi_table) 
 
     fprintf(file, "%i", descriptor.index);
     // Write content
-    for (i = 0; i < table.columns.size; i++) {
+    for (i = 0; i < descriptor.table->columns.size; i++) {
       // Write the column
-      fprintf(file, ";%lf", table.columns.values[j]);
+      fprintf(file, ";%lf", descriptor.table->columns.values[j]);
 
       // Write the rest of content
-      for (j = 0; j < headers.size; j++) {
-        fprintf(file, ";%lf", table.content.matrix[i][j]);
+      for (j = 0; j < header.size; j++) {
+        fprintf(file, ";%lf", descriptor.table->content.matrix[i][j]);
       }
 
       fprintf(file, "\n");
