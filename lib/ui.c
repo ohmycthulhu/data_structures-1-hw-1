@@ -16,6 +16,7 @@ void read_input(const char*, const char*, struct Table*, double*, double*, int, 
 void print_start(const char* msg);
 void print_end(const char* msg);
 void print_message(const char* type, const char* message);
+void read_range(const char*, int, double, double, double*, double*);
 
 /**
  * Implementation
@@ -86,6 +87,46 @@ void print_result(double value, const char* error){
     sprintf(buffer, "Value is %lf", value);
     print_message("Result", buffer);
   }
+}
+
+void read_range(const char* msg, int prec, double start, double end, double* output_start, double* output_end) {
+  double s = -1, e = -1;
+  char* str = (char*)malloc(sizeof(char) * 256);
+  char* error;
+  double base = pow(10, -prec);
+  do {
+    do {
+      if (strlen(error)) {
+        print_message("Error", error);
+        free(error);
+      }
+      error = (char *) malloc(sizeof(char) * 256);
+      error[0] = '\0';
+      printf("[Input] %s (lowest): ", msg);
+      scanf("%s", str);
+      s = floor(strtod(str, &error) * base) / base;
+    } while (s < start || strlen(error) > 0);
+
+    do {
+      if (strlen(error)) {
+        print_message("Error", error);
+        free(error);
+      }
+      error = (char *) malloc(sizeof(char) * 256);
+      error[0] = '\0';
+      printf("[Input] %s (highest) (r to return): ", msg);
+      scanf("%s", str);
+      if (strcmp(str, "r") == 0) {
+        e = end;
+        s = start - 1;
+      } else {
+        e = floor(strtod(str, &error) * base) / base;
+      }
+    } while (e > end || strlen(error) > 0);
+  } while(s < start);
+
+  *output_start = s;
+  *output_end = e;
 }
 
 #endif

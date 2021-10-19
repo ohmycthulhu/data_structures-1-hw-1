@@ -27,6 +27,7 @@ int find_index(struct Array, double);
 void add_to_array(struct Array * array, double element);
 void print_array(struct Array* array);
 int approximately_equal(double x1, double x2);
+struct Array generate_array(double start, double end, int n);
 
 /**
  * Implementation
@@ -67,6 +68,18 @@ void print_array(struct Array* array) {
 
 int approximately_equal(double x1, double x2) {
   return (fabs(x1 - x2)) < NEG_VALUE;
+}
+
+struct Array generate_array(double start, double end, int n) {
+  double * content = (double*)malloc(sizeof(double) * n);
+  double step = (end - start) / n;
+  int i = 0;
+  for (double s = start; s <= end; s += step, ++i) {
+    content[i] = s;
+  }
+
+  struct Array result = {content, n};
+  return result;
 }
 
 #endif
