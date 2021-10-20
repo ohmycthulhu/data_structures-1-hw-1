@@ -3,7 +3,7 @@
 //
 #include <stdlib.h>
 #include "test_helpers.c"
-#include "../lib/distributions.c"
+#include "distributions.c"
 
 const char *FILE_NAME = "distribution.c";
 

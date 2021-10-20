@@ -1,9 +1,9 @@
 //
 // Created by cthulhu on 19/10/2021.
 //
-#include "lib/ui.c"
-#include "lib/distributions.c"
-#include "lib/array.c"
+#include "ui.c"
+#include "distributions.c"
+#include "array.c"
 
 int main() {
   print_start("Chi-square Distribution");

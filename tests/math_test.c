@@ -3,8 +3,8 @@
 //
 #include <stdlib.h>
 #include "test_helpers.c"
-#include "../lib/math.c"
-#include "../lib/array.c"
+#include "math.c"
+#include "array.c"
 
 const char* FILE_NAME = "math_test.c";
 

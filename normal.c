@@ -1,6 +1,6 @@
 #include <stdlib.h>
-#include "lib/usual_table.c"
-#include "lib/ui.c"
+#include "usual_table.c"
+#include "ui.c"
 
 int main() {
   print_start("Normal distribution");

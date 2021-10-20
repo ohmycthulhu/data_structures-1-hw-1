@@ -3,7 +3,10 @@
 //
 #ifndef DISTRIBUTIONS_C
 #define DISTRIBUTIONS_C
+#include <stdlib.h>
 #include <math.h>
+#include "multi_table.c"
+#include "table.c"
 #include "math.c"
 
 /**

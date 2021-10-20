@@ -3,9 +3,9 @@
 //
 
 #include <stdio.h>
-#include "lib/binomial_table.c"
-#include "lib/multi_table.c"
-#include "lib/ui.c"
+#include "binomial_table.c"
+#include "multi_table.c"
+#include "ui.c"
 
 int main(int argc, char **argv) {
   print_start("Binomial distribution");

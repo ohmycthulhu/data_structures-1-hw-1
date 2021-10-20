@@ -11,7 +11,7 @@
 
 struct TableDescriptor {
     int index;
-    Table* table;
+    struct Table* table;
 };
 
 struct MultiTable{

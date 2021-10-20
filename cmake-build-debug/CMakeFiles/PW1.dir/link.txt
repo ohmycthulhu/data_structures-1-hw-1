@@ -1,1 +1,0 @@
-/usr/bin/cc -g CMakeFiles/PW1.dir/normal.c.o -o PW1 
