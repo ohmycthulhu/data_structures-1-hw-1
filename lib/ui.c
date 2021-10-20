@@ -121,8 +121,8 @@ void print_result(double value, const char* error){
 void read_range(const char* msg, int prec, double start, double end, double* output_start, double* output_end) {
   double s = -1, e = -1;
   char* str = (char*)malloc(sizeof(char) * 256);
-  char* error;
-  double base = pow(10, -prec);
+  char* error = "";
+  double base = pow(10, prec);
   do {
     do {
       if (strlen(error)) {

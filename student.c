@@ -21,7 +21,7 @@ int main() {
   print_start("Student's T Distribution");
 
   // Get range of integers
-  double t_start, t_end;
+  double t_start = 0, t_end = 0;
   read_range(
     "Input t",
     0,
@@ -36,9 +36,9 @@ int main() {
   double alpha_start, alpha_end;
   read_range(
       "Input alpha",
-      0,
-      1,
-      1e3,
+      2,
+      1e-3,
+      1 - 1e-3,
       &alpha_start,
       &alpha_end
   );
@@ -49,7 +49,7 @@ int main() {
 
   // Write table into file
   char* path = (char*)malloc(sizeof(char) * 256);
-  sprintf(path, "result-t-%li.csv", random());
+  sprintf(path, "results/result-t-%li.csv", random());
   write_table_to_csv_file(path, table);
 
   // Print the content of table

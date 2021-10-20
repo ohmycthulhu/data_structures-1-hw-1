@@ -48,7 +48,7 @@ int main() {
 
   // Write table into file
   char* path = (char*)malloc(sizeof(char) * 256);
-  sprintf(path, "result-chi-%li.csv", random());
+  sprintf(path, "results/result-chi-%li.csv", random());
   write_table_to_csv_file(path, table);
 
   // Print the content of table

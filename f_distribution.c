@@ -49,7 +49,7 @@ int main() {
 
   // Write table into file
   char* path = (char*)malloc(sizeof(char) * 256);
-  sprintf(path, "result-f-%li.csv", random());
+  sprintf(path, "results/result-f-%li.csv", random());
   save_multi_table_in_file(path, &content);
 
   // Print the content of table
