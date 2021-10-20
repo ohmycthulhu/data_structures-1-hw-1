@@ -6,14 +6,43 @@
 #include <stdio.h>
 
 /**
+ * This file contains functions for working with FILE* and entire files
+ * */
+
+/**
  * Declarations
  * */
 
+/**
+ * Function for skipping the current line
+ * */
 void skip_line(FILE* file);
+
+/**
+ * Function for resetting the pointer to start of the file
+ * */
 void reset_pointer(FILE *file);
+
+/**
+ * Function that counts on the line by counting amount of ; and also moves the pointer to the end of line
+ * */
 int count_numbers(FILE* f);
+
+/**
+ * Function for counting the lines in file
+ * */
 int count_lines(FILE* f);
+
+/**
+ * Function that creates new file from source and replaces `search` character by `replace`
+ * */
 void replace_character(const char*, const char*, char search, char replace);
+
+/**
+ * Function for printing n characters from current position of pointer
+ * Used primarily for debugging
+ * Reset the pointer to the state where it was, when the function was called
+ * */
 void print_curr_characters(FILE* file, size_t count);
 
 /**

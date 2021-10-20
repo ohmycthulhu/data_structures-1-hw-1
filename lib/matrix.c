@@ -3,12 +3,16 @@
 //
 #ifndef MATRIX_C
 #define MATRIX_C
-#include "file.c"
 
 /**
  * Declarations
  * */
 
+/**
+ * Structure for working with matrices
+ * n is count of rows
+ * m is count of columns
+ * */
 struct Matrix {
     double** matrix;
     size_t n, m;

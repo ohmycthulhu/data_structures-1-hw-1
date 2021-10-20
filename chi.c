@@ -6,6 +6,17 @@
 #include "array.c"
 
 int main() {
+  /**
+   * The algorithm:
+   *    1. Input
+   *    1.1. Get range for t
+   *    1.2. Get range for alpha
+   *    2. Generate the table
+   *    3. Output
+   *    3.1. Display the content of table
+   *    3.2. Write the table into a file
+   *    3.3. Display path to the file
+   * */
   print_start("Chi-square Distribution");
 
   // Get range of integers
@@ -23,7 +34,7 @@ int main() {
   // Get range of alphas
   double alpha_start, alpha_end;
   read_range(
-      "Input t",
+      "Input alpha",
       3,
       1e-5,
       1 - 1e3,

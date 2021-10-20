@@ -3,19 +3,46 @@
 //
 #ifndef BINOMIAL_TABLE_C
 #define BINOMIAL_TABLE_C
-#include "array.c"
-#include "table.c"
-#include "multi_table.c"
 #include "file.c"
+#include "multi_table.c"
+#include "table.c"
+#include "array.c"
+
+/**
+ * This file contains specific functions for working with binomial.csv
+ * It has the interface close to the usual_table.c
+ * */
 
 /**
  * Declarations
  * */
 
+/**
+ * Function for reading content of binomial.csv in multi-table data structure
+ * This function works with the open file
+ * */
 struct MultiTable read_binomial_table(FILE* file);
+
+/**
+ * Function for reading content of binomial.csv in multi-table data structure
+ * It creates temporary file for working
+ * */
 struct MultiTable create_binomial_table(const char* src);
+
+/**
+ * Function for reading the first row in Array structure
+ * */
 struct Array read_headers(FILE* file);
+
+/**
+ * Function for getting the index of subtable (index of "5;0;0.3;..." is 5)
+ * */
 int get_iteration_size(FILE * file);
+
+/**
+ * Function for reading the content of subtable
+ * It also moves the pointer to the start of next subtable
+ * */
 struct Table get_iteration_content(FILE * file, struct Array headers, int iteration_size);
 
 /**
@@ -55,11 +82,13 @@ struct MultiTable read_binomial_table(FILE* file) {
 }
 
 struct MultiTable create_binomial_table(const char* src) {
+    char* tmp_file = (char*)malloc(sizeof(char) * 256);
+    sprintf(tmp_file, "temp/table-%li.csv", random());
     // Create intermediate file
-    replace_character(src, "temp/binomial.csv", ',', '.');
+    replace_character(src, tmp_file, ',', '.');
 
     // Open file
-    FILE* file = fopen("temp/binomial.csv", "r");
+    FILE* file = fopen(tmp_file, "r");
 
     // Get the result
     struct MultiTable result = read_binomial_table(file);

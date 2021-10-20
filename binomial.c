@@ -1,16 +1,22 @@
 //
 // Created by cthulhu on 14/10/2021.
 //
-
-#include <stdio.h>
 #include "binomial_table.c"
 #include "multi_table.c"
 #include "ui.c"
 
 int main(int argc, char **argv) {
+  /**
+   * The algorithm:
+   *    1. Read multitable from binomial
+   *    1.1. If argument '-p' is provided, print the content, and exit
+   *    2. Get the row and column for this table
+   *    3. Display the result
+   * */
   print_start("Binomial distribution");
 
   print_message("Reading", "Started reading the table");
+
   struct MultiTable binomial_table = create_binomial_table("data/binomial.csv");
   print_message("Reading", "Finished reading the table");
 
@@ -25,7 +31,7 @@ int main(int argc, char **argv) {
   struct Table *table = find_table(binomial_table, iteration);
 
   if (table == NULL) {
-    printf("Unexpected behaviour!\n");
+    print_message("Error", "Unexpected behaviour!");
     exit(1);
   }
 

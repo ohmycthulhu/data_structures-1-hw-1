@@ -4,10 +4,10 @@
 #ifndef CUSTOM_MATH_C
 #define CUSTOM_MATH_C
 #include <math.h>
-#include "array.c"
 
 #define STOP 1.0e-8
 #define TINY 1.0e-30
+#define NEG_VALUE 1.0e-4
 
 /**
  * Declarations
@@ -36,6 +36,11 @@ double incomplete_beta(double x, double a, double b);
  * Function for computing factorial
  * */
 long factorial(int number);
+
+/**
+ * Function for checking whether the values are close enough
+ * */
+int approximately_equal(double x1, double x2);
 
 /**
  * Implementation
@@ -115,6 +120,10 @@ double incomplete_beta(double x, double a, double b) {
     }
 
     return 1.0/0.0;
+}
+
+int approximately_equal(double x1, double x2) {
+  return (fabs(x1 - x2)) < NEG_VALUE;
 }
 
 #endif

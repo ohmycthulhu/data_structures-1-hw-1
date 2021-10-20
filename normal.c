@@ -3,6 +3,12 @@
 #include "ui.c"
 
 int main() {
+  /**
+   * The algorithm:
+   *    1. Read table from normal file
+   *    2. Get the row and column for this table
+   *    3. Display the result
+   * */
   print_start("Normal distribution");
 
   print_message("Reading", "Started reading the table");

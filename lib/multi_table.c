@@ -9,19 +9,41 @@
  * Declarations
  * */
 
+/**
+ * A pointer to the table inside multi-table
+ * */
 struct TableDescriptor {
     int index;
     struct Table* table;
 };
 
+/**
+ * Data structure for containing several matrices with keys as indices
+ * */
 struct MultiTable{
     struct TableDescriptor* tables;
     size_t size;
 };
 
+/**
+ * Function for finding a table by index. Returns NULL if table doesn't exists
+ * */
 struct Table* find_table(struct MultiTable multiTable, int index);
+
+/**
+ * Function for generating a multi-table for generating multi-table
+ * It's crucial that indices and tables have equal length
+ * */
 struct MultiTable generate_multi_table(struct Table* tables, struct Array indices);
+
+/**
+ * Function for printing the content of multi-table
+ * */
 void print_multi_table(struct MultiTable* multi_table);
+
+/**
+ * Function for writing multi-table to .csv file
+ * */
 void save_multi_table_in_file(const char* path, struct MultiTable* multi_table);
 
 /**

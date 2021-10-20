@@ -11,11 +11,40 @@
 /**
  * Declarations
  * */
+
+/**
+ * Function for inputting the iteration number
+ * The number is validated by the presence as table index in multi-table
+* */
 int read_iteration(const char*, const char*, struct MultiTable*);
+
+/**
+ * Function for inputting a number that is divided in two complimentary numbers
+ * Precision controls the amount of digits after period
+ * The result is written into double pointers
+* */
 void read_input(const char*, const char*, struct Table*, double*, double*, int, int);
+
+/**
+ * Prints the start of program
+ * */
 void print_start(const char* msg);
+
+/**
+ * Prints the end of program
+ * */
 void print_end(const char* msg);
+
+/**
+ * Prints the message that has some type
+ * */
 void print_message(const char* type, const char* message);
+
+/**
+ * Function for reading range
+ * Uses precision to narrow the number and limits to validate the range
+ * Also provides the method to return and re-input the minimum
+ * */
 void read_range(const char*, int, double, double, double*, double*);
 
 /**

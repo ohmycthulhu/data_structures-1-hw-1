@@ -3,19 +3,45 @@
 //
 #ifndef TEST_HELPERS_C
 #define TEST_HELPERS_C
-// Deviation in percents
-#define ALLOWED_DEVIATION 2e-2
 #include <math.h>
 #include <stdio.h>
+
+// Deviation in percents
+#define ALLOWED_DEVIATION 2e-2
 
 /**
  * Declarations
  * */
+ /**
+  * Function for asserting if two numbers are equal
+  * Return 1 if there is an error
+  * */
 int assert_equal(double expect, double actual);
+
+/**
+ * Function for asserting if two numbers are approximately equal
+ * Return 1 if there is an error
+ * */
 int assert_approx_equal(double expect, double actual);
+
+/**
+ * Function for displaying test start
+ * */
 void display_test_start(const char* test_name);
+
+/**
+ * Function for displaying test end
+ * */
 void display_test_end(const char* test_name);
+
+/**
+ * Function for printing test progress
+ * */
 void display_test_progress(const char* test_name, int iteration, int max);
+
+/**
+ * Function for displaying errors count
+ * */
 void display_errors_count(const char* test_name, int errors_count);
 
 /**

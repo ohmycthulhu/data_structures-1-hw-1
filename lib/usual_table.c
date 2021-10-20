@@ -1,20 +1,43 @@
 //
 // Created by cthulhu on 13/10/2021.
 //
-
 #ifndef USUAL_TABLE_C
 #define USUAL_TABLE_C
-#include<stdio.h>
+#include <stdio.h>
 #include "table.c"
+
+/**
+ * This file contains functions for working with normal.csv like files
+ * */
 
 /**
  * Declarations
  * */
 
+/**
+ * Function for reading content of normal.csv in table structure
+ * */
 struct Table read_file(FILE* file);
+
+/**
+ * Function for reading content of normal.csv in table structure
+ * It creates temporary file and manipulates him
+ * */
 struct Table create_table(const char*);
+
+/**
+ * Function for reading content of the table. It requires information about size of columns and rows
+ * */
 struct Matrix read_content(FILE* file, size_t rows, size_t columns);
+
+/**
+ * Function for reading the header (columns) in Array format
+ * */
 struct Array read_headers(FILE* file);
+
+/**
+ * Function for reading the rows in Array format
+ * */
 struct Array read_columns(FILE* file);
 
 /**
@@ -35,7 +58,8 @@ struct Table read_file(FILE* file) {
 }
 
 struct Table create_table(const char* src) {
-    static const char* tmpFile = "temp/table.csv";
+    char* tmpFile = (char*)malloc(sizeof(char) * 256);
+    sprintf(tmpFile, "temp/table-%li.csv", random());
     replace_character(src, tmpFile, ',', '.');
     FILE * f = fopen(tmpFile, "r");
     struct Table result = read_file(f);

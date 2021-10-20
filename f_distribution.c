@@ -7,6 +7,17 @@
 #include "array.c"
 
 int main() {
+  /**
+   * The algorithm:
+   *    1. Input
+   *    1.1. Get range for df1
+   *    1.2. Get range for df2
+   *    2. Generate the multi-table
+   *    3. Output
+   *    3.1. Display the content of table
+   *    3.2. Write the table into a file
+   *    3.3. Display path to the file
+   * */
   print_start("F Distribution");
 
   // Get range of df_1
@@ -49,6 +60,7 @@ int main() {
   print_message("Result location", path);
 
   print_end("F Distribution");
+
   // Return
   return 0;
 }

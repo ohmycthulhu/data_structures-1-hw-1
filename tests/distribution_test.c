@@ -7,10 +7,16 @@
 
 const char *FILE_NAME = "distribution.c";
 
+// Function for testing:
+// double t_dist_cum(int degree_of_freedom, double t);
 int t_dist_cum_test();
 
+// Function for testing:
+// double chi_square_dist_cum(int degree_of_freedom, double t);
 int chi_square_dist_cum_test();
 
+// Function for testing:
+// double f_dist_cum(int degree_of_freedom_1, int degree_of_freedom_2, double alpha);
 int f_dist_cum_test();
 
 int main() {

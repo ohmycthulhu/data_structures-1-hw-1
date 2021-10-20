@@ -8,16 +8,26 @@
 
 const char* FILE_NAME = "math_test.c";
 
+// Function for testing:
+// double lower_incomplete_gamma(double s, double x);
 int lower_incomplete_gamma_test();
+
+// Function for testing:
+// double beta(double x, double y);
 int beta_test();
+
+// Function for testing:
+// double incomplete_beta(double x, double a, double b);
 int incomplete_beta_test();
+
+// Function for testing:
+// long factorial(int number);
 int factorial_test();
 
 int main() {
     display_test_start(FILE_NAME);
     int errors = 0;
 
-    // TODO: Enable the test
     errors += factorial_test();
     errors += lower_incomplete_gamma_test();
     errors += beta_test();

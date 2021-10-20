@@ -1,26 +1,40 @@
-#ifndef TABLE_C
 //
 // Created by cthulhu on 11/10/2021.
 //
+#ifndef TABLE_C
 #define TABLE_C
 #include <string.h>
-#include "array.c"
 #include "file.c"
 #include "matrix.c"
+#include "array.c"
 
 /**
  * Declarations
  * */
 
+/**
+ * Structure for working with table
+ * */
 struct Table {
     struct Array headers;
     struct Array columns;
     struct Matrix content;
 };
 
+/**
+ * Tries to get value from cell, defined by row and column value
+ * If there is no value, sets *error to error message
+ * */
 double get_value(struct Table table, double n, double m, char** error);
-void write_table_to_file(struct Table table, const char* src);
+
+/**
+ * Prints the content of the table
+ * */
 void print_table(struct Table *table);
+
+/**
+ * Writes the table into the file in csv format
+ * */
 void write_table_to_csv_file(const char* path, struct Table);
 
 /**
@@ -40,36 +54,6 @@ double get_value(struct Table table, double n, double m, char** error) {
     }
 
     return table.content.matrix[i][j];
-}
-
-void write_table_to_file(struct Table table, const char* src) {
-    FILE* file = fopen(src, "w");
-
-    if (ferror(file)) {
-        printf("Couldn't open a file");
-        return;
-    }
-
-    // Write table headers
-    for (int i = 0; i < table.headers.size; ++i) {
-        fprintf(file, ";%lf", table.headers.values[i]);
-    }
-
-    fprintf(file, "\n");
-
-    // Write table content
-    for (int i = 0; i < table.columns.size; ++i) {
-        // Print column
-        fprintf(file, "%lf", table.columns.values[i]);
-
-        // Print matrix content
-        for (int j = 0; j < table.content.m; ++j) {
-            fprintf(file, ";%lf", table.content.matrix[i][j]);
-        }
-        fprintf(file, "\n");
-    }
-
-    fclose(file);
 }
 
 void print_table(struct Table *table) {
