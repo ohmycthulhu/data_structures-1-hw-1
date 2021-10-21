@@ -4,6 +4,7 @@
 #ifndef FILE_C
 #define FILE_C
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * This file contains functions for working with FILE* and entire files
@@ -44,6 +45,11 @@ void replace_character(const char*, const char*, char search, char replace);
  * Reset the pointer to the state where it was, when the function was called
  * */
 void print_curr_characters(FILE* file, size_t count);
+
+/**
+ * Function for generating random filenames
+ * */
+char* generate_filename(const char* format);
 
 /**
  * Implementation
@@ -99,6 +105,12 @@ void print_curr_characters(FILE* file, size_t count) {
         printf("%c", getc(file));
     printf("\n\n");
     fseek(file, -(long)count, SEEK_CUR);
+}
+
+char* generate_filename(const char* format) {
+  char* path = (char*)malloc(sizeof(char) * 256);
+  sprintf(path, format, random());
+  return path;
 }
 
 #endif

@@ -62,12 +62,12 @@ struct Table* find_table(struct MultiTable multiTable, int index) {
 struct MultiTable generate_multi_table(struct Table* tables, struct Array indices) {
     size_t n = indices.size;
 
-    struct TableDescriptor* descriptors = (struct TableDescriptor*)malloc(sizeof(struct TableDescriptor*) * n);
+    struct TableDescriptor* descriptors = (struct TableDescriptor*)malloc(sizeof(struct TableDescriptor) * n);
 
     for (int i = 0; i < n; i++) {
-        struct TableDescriptor descriptor = { .index=(int)indices.values[i], .table=(tables + i) };
-        descriptors[i] = descriptor;
+        descriptors[i] = { .index=(int)indices.values[i], .table=(tables + i) };
     }
+
     struct MultiTable result = {
         descriptors,
         n
@@ -101,15 +101,16 @@ void save_multi_table_in_file(const char* path, struct MultiTable* multi_table) 
 
   struct Array header = multi_table->tables[0].table->headers;
 
-  const char* file_name = "temp/write_multi_table.csv";
+  char* file_name = generate_filename("temp/write_multi_table_%li.csv");
+
   // Open file
   FILE* file = fopen(file_name, "w");
 
   if (!file) {
     return;
   }
-  int i, j, index;
 
+  int i, j, index;
   // Write header
   fprintf(file, "p;");
   for(i = 0; i < header.size; i++)
@@ -125,12 +126,14 @@ void save_multi_table_in_file(const char* path, struct MultiTable* multi_table) 
   struct TableDescriptor descriptor;
   for (index = 0; index < multi_table->size; index++) {
     descriptor = multi_table->tables[index];
+    printf("Table descriptor #%i - %i, %p\n", index, descriptor.index, descriptor.table);
 
     fprintf(file, "%i", descriptor.index);
+
     // Write content
     for (i = 0; i < descriptor.table->columns.size; i++) {
       // Write the column
-      fprintf(file, ";%lf", descriptor.table->columns.values[j]);
+      fprintf(file, ";%lf", descriptor.table->columns.values[i]);
 
       // Write the rest of content
       for (j = 0; j < header.size; j++) {

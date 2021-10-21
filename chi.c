@@ -37,7 +37,7 @@ int main() {
       "Input alpha",
       3,
       1e-5,
-      1 - 1e3,
+      1 - 1e-3,
       &alpha_start,
       &alpha_end
   );

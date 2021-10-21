@@ -140,15 +140,12 @@ struct MultiTable generate_f_dist_multi_table(struct Array df1, struct Array df2
 struct Table generate_f_dist_table(struct Array df1, struct Array df2, double alpha) {
   int n = df2.size, m = df1.size;
   double** matrix_content = (double**)malloc(sizeof(double*) * n);
-  double* row;
   for (int i = 0; i < n; i++) {
-    row = (double*)malloc(sizeof(double) * m);
+    matrix_content[i] = (double*)malloc(sizeof(double) * m);
 
     for (int j = 0; j < m; j++) {
-      row[j] = f_dist_cum(df1.values[j], df2.values[i], alpha);
+      matrix_content[i][j] = f_dist_cum(df1.values[j], df2.values[i], alpha);
     }
-
-    matrix_content[i] = row;
   }
 
   struct Matrix matrix = {matrix_content, n, m};

@@ -44,12 +44,14 @@ int main() {
   );
   struct Array df2s = generate_array(df2_start, df2_end, 10);
 
+  char* path = generate_filename("results/result-f-%li.csv");
+
   // Generate the table
+  print_message("Progress", "Generating the table");
   struct MultiTable content = generate_f_dist_multi_table(df1s, df2s);
 
+  print_message("Progress", "Writing the table into file");
   // Write table into file
-  char* path = (char*)malloc(sizeof(char) * 256);
-  sprintf(path, "results/result-f-%li.csv", random());
   save_multi_table_in_file(path, &content);
 
   // Print the content of table
