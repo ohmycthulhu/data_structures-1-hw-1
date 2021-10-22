@@ -1,4 +1,4 @@
-objects = normal binomial chi student f_distribution
+objects = main chi student f_distribution
 all: $(objects)
 
 test_objects = distribution_test math_test
@@ -14,10 +14,7 @@ obj/%.o : %.c
 obj/%.o : tests/%.c
 	$(CC) -c $(CFLAGS) $(IDIRS) $< -o $@
 
-normal: obj/normal.o
-	$(CC) $(IDIRS) $^ -o bin/$@ $(CFLAGS)
-
-binomial: obj/binomial.o
+main: obj/main.o
 	$(CC) $(IDIRS) $^ -o bin/$@ $(CFLAGS)
 
 chi: obj/chi.o

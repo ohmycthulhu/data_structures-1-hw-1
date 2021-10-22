@@ -16,6 +16,9 @@ for compilation.
         <ul>
             <li>Normal distribution</li>
             <li>Binomial distribution</li>
+            <li>T distribution</li>
+            <li>Chi-square distribution</li>
+            <li>F distribution</li>
         </ul>
     </li>
     <li>
@@ -34,6 +37,9 @@ for compilation.
 <p>
     The second group receives parameters for table,
     generates the table, and returns the content and path of the file.
+    This part doesn't work properly.
+</p>
+<p>
 </p>
 
 ## Usage
@@ -46,12 +52,8 @@ for compilation.
     <th>Distribution</th>
 </tr>
 <tr>
-    <td>normal</td>
-    <td>Normal distribution</td>
-</tr>
-<tr>
-    <td>binomial</td>
-    <td>Binomial distribution</td>
+    <td>main</td>
+    <td>Main UI for using getting table values</td>
 </tr>
 <tr>
     <td>student</td>
@@ -79,3 +81,11 @@ where $KEYWORD is an available keyword
 There are also two programs for testing the implementation of library. 
 They are called `distribution_test` and `math_test`.
 For compiling all tests, you can use `tests`.
+
+## Generating values
+
+There are python scripts for generating some of tables.
+The usage can be found in `generate_tables.sh`.
+
+    bash generate_tables.sh
+

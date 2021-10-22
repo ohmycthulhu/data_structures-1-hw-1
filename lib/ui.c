@@ -26,6 +26,11 @@ int read_iteration(const char*, const char*, struct MultiTable*);
 void read_input(const char*, const char*, struct Table*, double*, double*, int, int);
 
 /**
+ * Function to input double number
+ * */
+double read_number(const char* msg);
+
+/**
  * Prints the start of program
  * */
 void print_start(const char* msg);
@@ -109,7 +114,6 @@ void print_message(const char* type, const char* message) {
 
 void print_result(double value, const char* error){
   if (strlen(error)) {
-    printf("%s\n", error);
     print_message("Error", error);
   } else {
     char* buffer = (char*) malloc(sizeof(char) * 256);
@@ -156,6 +160,22 @@ void read_range(const char* msg, int prec, double start, double end, double* out
 
   *output_start = s;
   *output_end = e;
+}
+
+double read_number(const char* msg) {
+  char* str = (char*)malloc(sizeof(char) * 256),
+      *error = (char*)malloc(sizeof(char) * 256);
+  double res;
+  do {
+    error[0] = '\0';
+    printf("[Input] %s: ", msg);
+    scanf("%s", str);
+
+    res = strtod(str, &error);
+  } while(error[0] != '\0');
+
+  free(str);
+  return res;
 }
 
 #endif

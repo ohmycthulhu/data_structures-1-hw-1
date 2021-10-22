@@ -46,7 +46,6 @@ double get_value(struct Table table, double n, double m, char** error) {
     int j = find_index(table.headers, m);
 
     if (i < 0 || j < 0) {
-        printf("Couldn't find something\n%i , %i\n", i, j);
         if (error != NULL) {
             *error = "Some of value doesn't exist";
         }
