@@ -28,6 +28,11 @@ struct Array {
 int find_index(struct Array, double);
 
 /**
+ * Function for checking if a value exists in array
+ * */
+int exists_in_array(struct Array, double);
+
+/**
  * Function for adding an element into the array
  * */
 void add_to_array(struct Array *array, double element);
@@ -100,6 +105,13 @@ struct Array generate_array(double start, double end, int n) {
 
   struct Array result = {content, n};
   return result;
+}
+
+int exists_in_array(struct Array array, double value) {
+  for (int i = 0; i < array.size; ++i)
+    if (array.values[i] == value)
+      return 1;
+  return 0;
 }
 
 #endif

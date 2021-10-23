@@ -26,6 +26,11 @@ int read_iteration(const char*, const char*, struct MultiTable*);
 void read_input(const char*, const char*, struct Table*, double*, double*, int, int);
 
 /**
+ * Function for reading number constrained by existence in array
+ * */
+double read_input_value(const char*, const char*, struct Array);
+
+/**
  * Function to input double number
  * */
 double read_number(const char* msg);
@@ -176,6 +181,20 @@ double read_number(const char* msg) {
 
   free(str);
   return res;
+}
+
+double read_input_value(const char* msg, const char* error, struct Array array) {
+  double result;
+  do {
+    result = read_number(msg);
+    if (exists_in_array(array, result)) {
+      break;
+    }
+    print_message("Error", error);
+    print_message("Info", "Available values:");
+    print_array(&array);
+  } while(1);
+  return result;
 }
 
 #endif

@@ -91,6 +91,11 @@ void replace_character(const char* file, const char* dest, char search, char rep
     FILE * f = fopen(file, "r");
     FILE * out = fopen(dest, "w");
 
+    if (f == NULL) {
+      printf("[Error] Couldn't open file %s\n", file);
+      exit(1);
+    }
+
     int c;
     while ((c = getc(f)) != EOF) {
         putc(c != search ? c : replace, out);

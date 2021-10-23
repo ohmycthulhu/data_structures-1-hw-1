@@ -83,19 +83,29 @@ int normal() {
 }
 
 int chi() {
-  return simple_table_ui("Chi-square distribution", "data/chi.csv", 0);
+  return simple_table_two_input_ui(
+    "Chi Distribution",
+    "data/chi.csv",
+    "Input degree of freedom",
+    "Input alpha"
+  );
 }
 
 int t() {
-  return simple_table_ui("Student's T distribution", "data/t.csv", 0);
+  return simple_table_two_input_ui(
+    "Student's T Distribution",
+    "data/t.csv",
+    "Input degree of freedom",
+    "Input alpha"
+  );
 }
 
 int binomial() {
-  return complex_table_ui("Binomial distribution", "data/binomial.csv", 0, 0);
+  return complex_table_two_inputs_ui("Binomial distribution", "data/binomial.csv", "Input p", "Input x", 0);
 }
 
 int f() {
-  return complex_table_ui("F distribution", "data/f.csv", 1, 1);
+  return complex_table_two_inputs_ui("F Distribution", "data/f.csv", "Input df1", "Input df2", 1);
 }
 
 /**
@@ -115,10 +125,9 @@ void print_available() {
  * */
 enum Distribution get_distribution() {
   print_available();
-  int dist_index = 0;
+  int dist_index;
   do {
-    printf("[Input] Input the index of distribution: ");
-    scanf("%i", &dist_index);
+    dist_index = (int)read_number("Input the index of distribution");
 
     switch (dist_index) {
       case 1: return NORMAL_DISTRIBUTION;
