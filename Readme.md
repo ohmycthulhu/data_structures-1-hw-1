@@ -89,3 +89,75 @@ The usage can be found in `generate_tables.sh`.
 
     bash generate_tables.sh
 
+
+## Usage
+
+### Normal distribution:
+
+- At "[Input]: Insert the index to find:" you input number as "degree of freedom" + "alpha", so for finding the value at 7, 0.25 you enter 7.25.
+- Get the result ("[Result] Value is 0.993960" for 2.51)
+
+### T Distribution, Chi distribution:
+
+- At "[Input]: Input degree of freedom:" input df
+- At "[Input]: Input alpha:" input alpha
+- Get the result ("[Result] Value is 0.267181" for t distribution and 5, 0.4)
+
+### Binomial distribution:
+
+- At "[Input]: Input iteration number: " input the number n (5, 10, etc.).
+- At "[Input] Input p: " you enter value of p.
+- At "[Input] Input x: " you enter value of n.
+- Get the result ("[Result] Value is 0.672320" for 3, 0.8, 4)
+
+[Input] Input p: 3
+[Error] Value is not supported
+[Info] Available values:
+0.100000, 0.200000, 0.250000, 0.300000, 0.400000, 0.500000, 0.600000, 0.700000, 0.750000, 0.800000, 0.900000
+[Input] Input p: 0.8
+[Input] Input x: 4
+[Result] Value is 0.672320
+
+### F distribution:
+
+- At "[Input]: Input iteration number:" input index of alpha.
+- Input the first degree of freedom at "[Input] Input df1:"
+- Input the second degree of freedom at "[Input] Input df2: "
+- Get the result ("[Result] Value is 3.619477" for 1, 3, 5)
+
+### Alpha values table
+
+<table>
+    <tr>
+        <th>Index</th>
+        <th>Alpha</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>0.1</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>0.05</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>0.01</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>0.005</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>0.001</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>0.0005</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>0.0001</td>
+    </tr>
+</table>

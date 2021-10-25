@@ -87,7 +87,7 @@ class FDistribution(Distribution):
 
     @staticmethod
     def default_alphas():
-        return [0.9, 0.5, 0.1]
+        return [0.1, 0.05, 0.01, 0.005, 0.001, 0.0005, 0.0001]
 
     def validate(self):
         if self.df2_max is None or self.df1_max is None:

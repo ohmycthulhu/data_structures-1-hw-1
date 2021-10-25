@@ -46,7 +46,7 @@ class ComplexWriter(Writer):
     def write_content(self, file, data):
         rows, indices, content = data['rows'], data['indices'], data['values']
         for i, index in enumerate(indices):
-            self.write_table(file, rows, content[i], math.floor(index * 10))
+            self.write_table(file, rows, content[i], math.floor(i + 1))
 
     def write_table(self, file, rows, content, index):
         file.write(f"{index}")
